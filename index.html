@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İlayda'ya Kavuşma Süresi</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('biz.jpg'); /* Arkaplan resmi ekle */
+            background-size: cover;
+            background-position: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.7); /* Saydamlık ekleyerek arkaplanı yumuşat */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+            margin-top: 500px;
+        }
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #333; /* Metin rengini değiştir */
+        }
+        .countdown {
+            font-size: 48px;
+            font-weight: bold;
+            color: #dc143c; /* Sayac rengini değiştir */
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3); /* Yazıya hafif bir gölge ekle */
+        }
+        .message {
+            font-style: italic;
+            color: #333;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="heart.jpg" alt="Kalp İkonu" width="100"> <!-- Kalp ikonu ekle -->
+        <h1>İlayda'ya Kavuşma Süresi</h1>
+        <div id="countdown" class="countdown"></div>
+        <p class="message">Yavru Balık</p> <!-- Kişisel bir mesaj ekle -->
+    </div>
+
+    <script>
+        const targetDate = new Date("2024-08-15T00:00:00").getTime();
+
+        const countdownElement = document.getElementById("countdown");
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            countdownElement.innerHTML = `${days} gün ${hours} saat ${minutes} dakika ${seconds} saniye`;
+
+            if (distance < 0) {
+                clearInterval(countdownInterval);
+                countdownElement.innerHTML = "İlayda'ya Kavuşuldu!";
+            }
+        }
+
+        const countdownInterval = setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
