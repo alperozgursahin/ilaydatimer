@@ -11,43 +11,45 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            background-image: url('biz.jpg'); /* Arkaplan resmi ekle */
+            background-image: url('biz.jpg');
             background-size: cover;
             background-position: center;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         .container {
             text-align: center;
-            background: rgba(255, 255, 255, 0.7); /* Saydamlık ekleyerek arkaplanı yumuşat */
+            background: rgba(255, 255, 255, 0.7);
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0,0,0,0.3);
             margin-top: 500px;
+            max-width: 80%;
         }
         h1 {
-            font-size: 36px;
+            font-size: 24px;
             margin-bottom: 20px;
-            color: #333; /* Metin rengini değiştir */
+            color: #333;
         }
         .countdown {
-            font-size: 48px;
+            font-size: 36px;
             font-weight: bold;
-            color: #dc143c; /* Sayac rengini değiştir */
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3); /* Yazıya hafif bir gölge ekle */
+            color: #dc143c;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
         .message {
             font-style: italic;
             color: #333;
             margin-top: 20px;
+            font-size: 16px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <img src="heart.jpg" alt="Kalp İkonu" width="100"> <!-- Kalp ikonu ekle -->
+        <img src="heart.jpg" alt="Kalp İkonu" width="100">
         <h1>İlayda'ya Kavuşma Süresi</h1>
         <div id="countdown" class="countdown"></div>
-        <p class="message">Yavru Balık</p> <!-- Kişisel bir mesaj ekle -->
+        <p class="message">Yavru Balık</p>
     </div>
 
     <script>
@@ -68,7 +70,7 @@
 
             if (distance < 0) {
                 clearInterval(countdownInterval);
-                countdownElement.innerHTML = "İlayda'ya Kavuşuldu!";
+                countdownElement.innerHTML = "Süre Doldu!";
             }
         }
 
