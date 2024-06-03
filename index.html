@@ -16,16 +16,17 @@
             background-repeat: no-repeat;
             background-position: center;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
         }
 
         .container {
             text-align: center;
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.8);
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0,0,0,0.3);
-            margin-top: 500px;
             max-width: 80%;
+            z-index: 10;
         }
         h1 {
             font-size: 24px;
@@ -43,6 +44,23 @@
             color: #333;
             margin-top: 20px;
             font-size: 16px;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
+        }
+
+        .heart {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: url('heart.jpg') no-repeat center center;
+            background-size: cover;
+            animation: float 4s ease-in-out infinite;
+            opacity: 0.8;
+            z-index: 1;
         }
     </style>
 </head>
@@ -77,6 +95,21 @@
         }
 
         const countdownInterval = setInterval(updateCountdown, 1000);
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.style.left = Math.random() < 0.5 ? '10px' : 'calc(100% - 40px)';
+            heart.style.top = Math.random() * 100 + 'vh';
+            heart.style.animationDuration = Math.random() * 2 + 3 + 's';
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+
+        setInterval(createHeart, 500);
     </script>
 </body>
 </html>
